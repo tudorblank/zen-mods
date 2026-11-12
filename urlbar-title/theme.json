@@ -1,0 +1,12 @@
+{
+  "id": "urlbar-title",
+  "name": "URL Bar Title",
+  "description": "Shows the tab title in the URL bar; hover reveals the URL, click edits the full URL. Text is centered.",
+  "author": "tudorblank",
+  "version": "1.0",
+  "style": { "chrome": "userChrome.css" },
+  "scripts": {
+    "urlbar-title.uc.mjs": { "include": ["chrome://browser/content/browser.xhtml"] }
+  },
+  "fork": ["zen"]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "glass-edges",
+  "name": "Glass Edges",
+  "description": "macOS-style glassy outlines on tabs, Essentials, toolbar buttons and the URL bar.",
+  "author": "tudorblank",
+  "version": "1.0",
+  "style": { "chrome": "userChrome.css" },
+  "fork": ["zen"]
+}

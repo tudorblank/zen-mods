@@ -1,0 +1,73 @@
+/* Glass Edges — local mod
+ * macOS-style glass rim: a bright hairline along the top edge, a faint
+ * shade along the bottom, a thin outline all round, and a soft sheen.
+ * Tweak the strength here (0 = off, 1 = default, 2 = double).
+ */
+:root {
+  --ge-strength: 1;
+
+  --ge-outline:   light-dark(rgb(0 0 0 / calc(.08 * var(--ge-strength))),   rgb(255 255 255 / calc(.10 * var(--ge-strength))));
+  --ge-highlight: light-dark(rgb(255 255 255 / calc(.70 * var(--ge-strength))), rgb(255 255 255 / calc(.18 * var(--ge-strength))));
+  --ge-lowlight:  light-dark(rgb(0 0 0 / calc(.06 * var(--ge-strength))),   rgb(0 0 0 / calc(.30 * var(--ge-strength))));
+  --ge-drop:      rgb(0 0 0 / calc(.18 * var(--ge-strength)));
+  --ge-sheen:     light-dark(rgb(255 255 255 / calc(.18 * var(--ge-strength))), rgb(255 255 255 / calc(.035 * var(--ge-strength))));
+
+  --ge-shadow:
+    inset 0 0 0 1px var(--ge-outline),
+    inset 0 1px 0 0 var(--ge-highlight),
+    inset 0 -1px 0 0 var(--ge-lowlight),
+    0 1px 2px var(--ge-drop),
+    0 3px 8px -6px var(--ge-drop);
+  --ge-sheen-image: linear-gradient(180deg, var(--ge-sheen), transparent 35%);
+}
+
+/* ---------- Essentials (always) ---------- */
+.tabbrowser-tab[zen-essential="true"] > .tab-stack > .tab-background {
+  box-shadow: var(--ge-shadow) !important;
+  background-image: var(--ge-sheen-image) !important;
+}
+
+/* ---------- Regular tabs: selected / hovered / multiselected ---------- */
+.tabbrowser-tab:not([zen-essential="true"]):is([visuallyselected], [multiselected="true"], :hover) > .tab-stack > .tab-background {
+  box-shadow: var(--ge-shadow) !important;
+  background-image: var(--ge-sheen-image) !important;
+}
+
+/* ---------- Toolbar / sidebar buttons: hovered, pressed or open ---------- */
+:is(#navigator-toolbox, #zen-appcontent-navbar-container, #zen-sidebar-foot-buttons, #zen-sidebar-top-buttons)
+  toolbarbutton:not([disabled]):is(:hover, [open], [checked="true"], :active)
+  > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack, .toolbarbutton-text) {
+  box-shadow: var(--ge-shadow) !important;
+}
+
+/* ---------- URL bar (resting) and the floating search popup ---------- */
+#urlbar:not([breakout-extend]) > .urlbar-background {
+  box-shadow: var(--ge-shadow) !important;
+  background-image: var(--ge-sheen-image) !important;
+}
+#urlbar[breakout-extend] > .urlbar-background {
+  box-shadow:
+    inset 0 0 0 1px var(--ge-outline),
+    inset 0 1px 0 0 var(--ge-highlight),
+    0 30px 140px -15px rgb(0 0 0 / .6) !important;
+}
+
+/* ---------- Compact-mode floating top toolbar rim ---------- */
+:root[zen-compact-mode="true"] #zen-appcontent-navbar-wrapper .zen-toolbar-background {
+  box-shadow:
+    inset 0 0 0 1px var(--ge-outline),
+    inset 0 1px 0 0 var(--ge-highlight),
+    var(--zen-big-shadow, 0 8px 30px rgb(0 0 0 / .3)) !important;
+}
+
+/* ---------- Compact-mode floating sidebar body rim (OFF by default) ----------
+ * Flag: about:config -> glass-edges.compact-sidebar-body = true to turn it on.
+ * Buttons, tabs and Essentials inside the sidebar keep their glass either way. */
+@media -moz-pref("glass-edges.compact-sidebar-body") {
+  :root[zen-compact-mode="true"] #navigator-toolbox .zen-toolbar-background {
+    box-shadow:
+      inset 0 0 0 1px var(--ge-outline),
+      inset 0 1px 0 0 var(--ge-highlight),
+      var(--zen-big-shadow, 0 8px 30px rgb(0 0 0 / .3)) !important;
+  }
+}

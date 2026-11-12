@@ -1,0 +1,9 @@
+{
+  "id": "glass-compact",
+  "name": "Glass Compact",
+  "description": "Makes the compact-mode sidebar/toolbar and the floating search popup translucent with a blur behind them.",
+  "author": "tudorblank",
+  "version": "1.0",
+  "style": { "chrome": "userChrome.css" },
+  "fork": ["zen"]
+}
