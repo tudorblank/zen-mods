@@ -1,17 +1,11 @@
-/* Zen Logo Menu — swaps the main menu "..." icon for the Zen logo.
- *
- * The logo is loaded through chrome://sine/content/ (Sine's mapping of the
- * sine-mods folder): Firefox only lets an SVG take the toolbar's colour
- * (context-fill) when it comes from a chrome:// URL, not from file://.
- *
- * Colour follows Zen's theme (the toolbar's icon colour); hover turns it
- * Zen's signature orange.
- */
+/* Zen Logo Menu */
+
 :root {
   --zlm-hover-color: #F76F53;
 }
 
 #PanelUI-menu-button {
+  /* chrome:// so context-fill works (it doesn't for file://) */
   list-style-image: url("chrome://sine/content/zen-logo-menu/zen-logo.svg") !important;
 
   & .toolbarbutton-icon {
@@ -20,7 +14,6 @@
   }
 }
 
-/* Hover / open: Zen orange */
 #PanelUI-menu-button:is(:hover, [open]) .toolbarbutton-icon {
   fill: var(--zlm-hover-color) !important;
   fill-opacity: 1 !important;

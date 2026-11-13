@@ -1,8 +1,5 @@
-/* Glass Compact — local mod
- * Tweak these to taste.
- *   --glass-opacity : how solid the tint is (0 = fully clear, 1 = solid)
- *   --glass-blur    : how much the content behind is blurred
- */
+/* Glass Compact */
+
 :root {
   --glass-opacity: 0.6;
   --glass-blur: 24px;
@@ -12,12 +9,10 @@
   --glass-popup-blur: 30px;
 }
 
-/* ---------- Compact mode: floating sidebar + top toolbar ---------- */
 :root[zen-compact-mode="true"] :is(#navigator-toolbox, #zen-appcontent-navbar-wrapper) .zen-toolbar-background {
   background: transparent !important;
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate)) !important;
 
-  /* The theme colour/gradient is painted by these two layers; fade them. */
   &::after {
     opacity: calc(var(--zen-background-opacity, 1) * var(--glass-opacity)) !important;
   }
@@ -26,7 +21,6 @@
   }
 }
 
-/* ---------- Floating search popup (Ctrl+L / new tab) ---------- */
 #urlbar[breakout-extend] .urlbar-background {
   background-color: light-dark(
     rgb(255 255 255 / var(--glass-popup-opacity)),
@@ -35,13 +29,8 @@
   backdrop-filter: blur(var(--glass-popup-blur)) saturate(var(--glass-saturate)) !important;
 }
 
-/* ---------- Make the web page blurrable ----------
- * Normally the web page is handed straight to the compositor as a separate
- * layer, so backdrop-filter can't see it (it only worked over Zen's own pages,
- * like Settings). Forcing the page container onto its own layer that Firefox
- * composites itself lets the blur reach it. Only applied while a glass surface
- * is actually showing, since this can wash out HDR video.
- * (Same technique as Floaty UI / Zia.) */
+/* Put the page on its own layer while glass is showing, otherwise
+   backdrop-filter can't see remote web content. Trick from Zia / Floaty UI. */
 :root[zen-compact-mode="true"]:is(
     [zen-renaming-tab="true"],
     :has(#navigator-toolbox:is([zen-has-hover], [zen-user-show], [zen-has-empty-tab], [flash-popup], [has-popup-menu], [movingtab], [zen-compact-mode-active], [animate="true"])),

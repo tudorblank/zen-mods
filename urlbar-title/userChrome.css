@@ -1,6 +1,5 @@
-/* URL Bar Title — local mod */
+/* URL Bar Title */
 
-/* Center whatever the URL bar shows (title, URL, or what you're typing). */
 #urlbar-input {
   text-align: center !important;
 }
@@ -9,8 +8,6 @@
   position: relative;
 }
 
-/* The title overlay sits exactly on top of the real input and ignores clicks,
-   so clicking goes straight through to the URL field. */
 #uc-urlbar-title {
   position: absolute;
   inset: 0;
@@ -32,7 +29,7 @@
   transition: opacity 120ms ease;
 }
 
-/* Idle (not hovered, not focused): show the title, hide the URL. */
+/* show the title until hovered or focused */
 #urlbar[uc-show-title]:not([focused], :hover) #uc-urlbar-title {
   opacity: 1;
 }

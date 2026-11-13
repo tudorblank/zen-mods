@@ -1,12 +1,11 @@
-// URL Bar Title — shows the current tab's title in the URL bar.
-// Hover -> real URL, click/focus -> normal full-URL editing.
+// URL Bar Title: shows the tab title in the URL bar.
 
 (async () => {
   if (window.delayedStartupPromise) {
     await window.delayedStartupPromise;
   }
 
-  // <moz-urlbar> builds its inner markup lazily; wait for the input to exist.
+  // moz-urlbar builds its markup lazily
   let urlbar, input;
   for (let i = 0; i < 100; i++) {
     urlbar = document.getElementById("urlbar");
@@ -15,7 +14,6 @@
     await new Promise((r) => setTimeout(r, 100));
   }
   if (!urlbar || !input || document.getElementById("uc-urlbar-title")) return;
-  console.log("[urlbar-title] loaded");
 
   const overlay = document.createElementNS("http://www.w3.org/1999/xhtml", "div");
   overlay.id = "uc-urlbar-title";
@@ -35,13 +33,11 @@
     }
   };
 
-  // Tab switched or a tab's title changed.
   gBrowser.tabContainer.addEventListener("TabSelect", update);
   gBrowser.tabContainer.addEventListener("TabAttrModified", (e) => {
     if (e.target === gBrowser.selectedTab) update();
   });
 
-  // Navigation in the current tab.
   const progressListener = {
     onLocationChange() { update(); },
     QueryInterface: ChromeUtils.generateQI([
@@ -51,7 +47,6 @@
   };
   gBrowser.addProgressListener(progressListener);
 
-  // URL bar state changes (typing makes pageproxystate "invalid", etc.).
   new MutationObserver(update).observe(urlbar, {
     attributes: true,
     attributeFilter: ["pageproxystate", "focused"],
