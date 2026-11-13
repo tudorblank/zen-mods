@@ -1,9 +1,40 @@
 /* Zen Logo Menu — swaps the main menu "..." icon for the Zen logo.
- * The logo uses the toolbar's icon colour, so it follows your theme. */
-#PanelUI-menu-button {
-  list-style-image: url("zen-logo.svg") !important;
+ *
+ * The logo is loaded through chrome://sine/content/ (Sine's mapping of the
+ * sine-mods folder): Firefox only lets an SVG take the toolbar's colour
+ * (context-fill) when it comes from a chrome:// URL, not from file://.
+ *
+ * Theme option (Sine settings -> Zen Logo Menu):
+ *   Auto  - uses the toolbar's own icon colour (follows Zen's theme)
+ *   Dark  - white logo
+ *   Light - black logo
+ * Hover: Zen's signature orange.
+ */
+:root {
+  --zlm-hover-color: #F76F53;
 }
 
-#PanelUI-menu-button .toolbarbutton-icon {
-  -moz-context-properties: fill, fill-opacity !important;
+#PanelUI-menu-button {
+  list-style-image: url("chrome://sine/content/zen-logo-menu/zen-logo.svg") !important;
+
+  & .toolbarbutton-icon {
+    -moz-context-properties: fill, fill-opacity !important;
+    transition: fill 0.15s ease, fill-opacity 0.15s ease;
+  }
+}
+
+/* Theme: Dark -> white logo */
+:root:has(.sine-theme-strings[zen-logo-menu-theme="dark"]) #PanelUI-menu-button .toolbarbutton-icon {
+  fill: #fff !important;
+}
+
+/* Theme: Light -> black logo */
+:root:has(.sine-theme-strings[zen-logo-menu-theme="light"]) #PanelUI-menu-button .toolbarbutton-icon {
+  fill: #000 !important;
+}
+
+/* Hover / open: Zen orange */
+#PanelUI-menu-button:is(:hover, [open]) .toolbarbutton-icon {
+  fill: var(--zlm-hover-color) !important;
+  fill-opacity: 1 !important;
 }

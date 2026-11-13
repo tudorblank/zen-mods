@@ -4,6 +4,11 @@
   "description": "Replaces the toolbar's \"...\" menu button icon with the Zen logo.",
   "author": "tudorblank",
   "version": "1.0",
-  "style": { "chrome": "userChrome.css" },
-  "fork": ["zen"]
+  "style": {
+    "chrome": "userChrome.css"
+  },
+  "fork": [
+    "zen"
+  ],
+  "preferences": "preferences.json"
 }
