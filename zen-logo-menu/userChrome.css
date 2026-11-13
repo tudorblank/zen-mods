@@ -4,11 +4,8 @@
  * sine-mods folder): Firefox only lets an SVG take the toolbar's colour
  * (context-fill) when it comes from a chrome:// URL, not from file://.
  *
- * Theme option (Sine settings -> Zen Logo Menu):
- *   Auto  - uses the toolbar's own icon colour (follows Zen's theme)
- *   Dark  - white logo
- *   Light - black logo
- * Hover: Zen's signature orange.
+ * Colour follows Zen's theme (the toolbar's icon colour); hover turns it
+ * Zen's signature orange.
  */
 :root {
   --zlm-hover-color: #F76F53;
@@ -21,16 +18,6 @@
     -moz-context-properties: fill, fill-opacity !important;
     transition: fill 0.15s ease, fill-opacity 0.15s ease;
   }
-}
-
-/* Theme: Dark -> white logo */
-:root:has(.sine-theme-strings[zen-logo-menu-theme="dark"]) #PanelUI-menu-button .toolbarbutton-icon {
-  fill: #fff !important;
-}
-
-/* Theme: Light -> black logo */
-:root:has(.sine-theme-strings[zen-logo-menu-theme="light"]) #PanelUI-menu-button .toolbarbutton-icon {
-  fill: #000 !important;
 }
 
 /* Hover / open: Zen orange */

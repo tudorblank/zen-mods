@@ -9,6 +9,5 @@
   },
   "fork": [
     "zen"
-  ],
-  "preferences": "preferences.json"
+  ]
 }
