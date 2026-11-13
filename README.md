@@ -14,10 +14,10 @@ Small mods for [Zen Browser](https://zen-browser.app), installable with [Sine](h
 In Zen, open **Settings → Sine**, paste one of these into the marketplace / "install from GitHub" box, and press install:
 
 ```
-<your-github-username>/zen-mods/tree/main/urlbar-title
-<your-github-username>/zen-mods/tree/main/glass-compact
-<your-github-username>/zen-mods/tree/main/glass-edges
-<your-github-username>/zen-mods/tree/main/zen-logo-menu
+tudorblank/zen-mods/tree/main/urlbar-title
+tudorblank/zen-mods/tree/main/glass-compact
+tudorblank/zen-mods/tree/main/glass-edges
+tudorblank/zen-mods/tree/main/zen-logo-menu
 ```
 
 Restart Zen afterwards.
