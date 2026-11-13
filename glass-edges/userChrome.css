@@ -35,9 +35,18 @@
 
 /* ---------- Toolbar / sidebar buttons: hovered, pressed or open ---------- */
 :is(#navigator-toolbox, #zen-appcontent-navbar-container, #zen-sidebar-foot-buttons, #zen-sidebar-top-buttons)
-  toolbarbutton:not([disabled]):is(:hover, [open], [checked="true"], :active)
-  > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack, .toolbarbutton-text) {
+  toolbarbutton:not([disabled], #tabs-newtab-button, #vertical-tabs-newtab-button):is(:hover, [open], [checked="true"], :active)
+  > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
   box-shadow: var(--ge-shadow) !important;
+}
+
+/* "+ New Tab" row in the sidebar: Zen paints its hover on the whole row, so the
+   rim goes on the row too (not separately on the icon and the label). */
+:is(#tabs-newtab-button, #vertical-tabs-newtab-button):not([disabled]):is(:hover, [open], :active) {
+  box-shadow: var(--ge-shadow) !important;
+}
+:is(#tabs-newtab-button, #vertical-tabs-newtab-button) > :is(.toolbarbutton-icon, .toolbarbutton-text) {
+  box-shadow: none !important;
 }
 
 /* ---------- URL bar (resting) and the floating search popup ---------- */
