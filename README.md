@@ -1,12 +1,13 @@
 # Zen mods
 
-Three small mods for [Zen Browser](https://zen-browser.app), installable with [Sine](https://github.com/CosmoCreeper/Sine).
+Small mods for [Zen Browser](https://zen-browser.app), installable with [Sine](https://github.com/CosmoCreeper/Sine).
 
 | Mod | What it does |
 | --- | --- |
 | [`urlbar-title`](urlbar-title) | Shows the tab's title in the URL bar. Hover to see the real URL; click to edit the full URL. Text is centered. **(JavaScript)** |
 | [`glass-compact`](glass-compact) | Makes the compact-mode sidebar/top toolbar and the floating search popup translucent, with the page blurred behind them. |
 | [`glass-edges`](glass-edges) | macOS-style glassy outlines on tabs, Essentials, toolbar/sidebar buttons and the URL bar. |
+| [`zen-logo-menu`](zen-logo-menu) | Replaces the toolbar's "..." menu button with the Zen logo. |
 
 ## Install
 
@@ -16,13 +17,14 @@ In Zen, open **Settings → Sine**, paste one of these into the marketplace / "i
 <your-github-username>/zen-mods/tree/main/urlbar-title
 <your-github-username>/zen-mods/tree/main/glass-compact
 <your-github-username>/zen-mods/tree/main/glass-edges
+<your-github-username>/zen-mods/tree/main/zen-logo-menu
 ```
 
 Restart Zen afterwards.
 
 **`urlbar-title` is a JavaScript mod.** Sine only runs JavaScript from mods outside its store when
-**"Allow external JS"** is enabled in Sine's settings (pref `sine.allow-unsafe-js`). The two glass
-mods are CSS only and need nothing extra.
+**"Allow external JS"** is enabled in Sine's settings (pref `sine.allow-unsafe-js`). The other mods
+are CSS only and need nothing extra.
 
 ## Tweaking
 

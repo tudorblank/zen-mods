@@ -1,0 +1,9 @@
+/* Zen Logo Menu — swaps the main menu "..." icon for the Zen logo.
+ * The logo uses the toolbar's icon colour, so it follows your theme. */
+#PanelUI-menu-button {
+  list-style-image: url("zen-logo.svg") !important;
+}
+
+#PanelUI-menu-button .toolbarbutton-icon {
+  -moz-context-properties: fill, fill-opacity !important;
+}
